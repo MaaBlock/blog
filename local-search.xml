@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>把**文本**替换为使用html的加粗标识</title>
+    <link href="/MaBlockBlog/2025/08/14/regex-replace-sharp-to-b/"/>
+    <url>/MaBlockBlog/2025/08/14/regex-replace-sharp-to-b/</url>
+    
+    <content type="html"><![CDATA[<h1 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs regex">\*\*(.*?)\*\*<br></code></pre></td></tr></table></figure><h1 id="替换为"><a href="#替换为" class="headerlink" title="替换为"></a>替换为</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs regex">&lt;b&gt;$1&lt;/b&gt;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>正则表达式</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
