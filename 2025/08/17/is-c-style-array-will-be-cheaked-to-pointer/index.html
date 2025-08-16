@@ -19,22 +19,21 @@
   <meta name="author" content="MaBlock">
   <meta name="keywords" content="">
   
-    <meta name="description" content="graph TD     A[编程范式] --&gt; B[命令式编程&lt;br&#x2F;&gt;Imperative Programming]     A --&gt; C[声明式编程&lt;br&#x2F;&gt;Declarative Programming]          B --&gt; D[过程式编程&lt;br&#x2F;&gt;Procedural Programming]     B --&gt; E">
+    <meta name="description" content="结果及结论按引用传递:不会按值传递:会c语言数组不会被std::is_pointer检测为指针。如果按值传递退化为指针则会 测试代码如下： 1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;iostream&gt;#include &lt;type_traits&gt;temp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编程范式">
-<meta property="og:url" content="https://maablock.github.io/blog/2025/08/14/programmer-pattern/index.html">
+<meta property="og:title" content="c语言数组会被std::is_pointer&lt;T&gt;检测为指针吗？">
+<meta property="og:url" content="https://maablock.github.io/blog/2025/08/17/is-c-style-array-will-be-cheaked-to-pointer/index.html">
 <meta property="og:site_name" content="MaBlock Blog">
-<meta property="og:description" content="graph TD     A[编程范式] --&gt; B[命令式编程&lt;br&#x2F;&gt;Imperative Programming]     A --&gt; C[声明式编程&lt;br&#x2F;&gt;Declarative Programming]          B --&gt; D[过程式编程&lt;br&#x2F;&gt;Procedural Programming]     B --&gt; E">
+<meta property="og:description" content="结果及结论按引用传递:不会按值传递:会c语言数组不会被std::is_pointer检测为指针。如果按值传递退化为指针则会 测试代码如下： 1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;iostream&gt;#include &lt;type_traits&gt;temp">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-14T08:53:48.000Z">
-<meta property="article:modified_time" content="2025-08-14T08:55:52.889Z">
+<meta property="article:published_time" content="2025-08-16T16:48:08.000Z">
+<meta property="article:modified_time" content="2025-08-16T16:54:03.820Z">
 <meta property="article:author" content="MaBlock">
-<meta property="article:tag" content="程序设计">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>编程范式 - MaBlock Blog</title>
+  <title>c语言数组会被std::is_pointer&lt;T&gt;检测为指针吗？ - MaBlock Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="编程范式"></span>
+            <span id="subtitle" data-typed-text="c语言数组会被std::is_pointer&lt;T&gt;检测为指针吗？"></span>
           
         </div>
 
@@ -211,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-14 16:53" pubdate>
-          2025年8月14日 下午
+        <time datetime="2025-08-17 00:48" pubdate>
+          2025年8月17日 凌晨
         </time>
       </span>
     
@@ -223,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          99 字
+          425 字
         
       </span>
     
@@ -234,7 +233,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -271,32 +270,17 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">编程范式</h1>
+            <h1 id="seo-header">c语言数组会被std::is_pointer&lt;T&gt;检测为指针吗？</h1>
             
             
               <div class="markdown-body">
                 
-                <pre><code class=" mermaid">graph TD
-    A[编程范式] --&gt; B[命令式编程&lt;br/&gt;Imperative Programming]
-    A --&gt; C[声明式编程&lt;br/&gt;Declarative Programming]
-    
-    B --&gt; D[过程式编程&lt;br/&gt;Procedural Programming]
-    B --&gt; E[面向对象编程&lt;br/&gt;Object-Oriented Programming]
-    
-    C --&gt; F[函数式编程&lt;br/&gt;Functional Programming]
-    C --&gt; G[逻辑式编程&lt;br/&gt;Logic Programming]
-    C --&gt; H[响应式编程&lt;br/&gt;Reactive Programming]
-    
-    style A fill:#e1f5fe
-    style B fill:#fff3e0
-    style C fill:#f3e5f5
-    style D fill:#e8f5e8
-    style E fill:#fff8e1
-    style F fill:#fce4ec
-    style G fill:#e0f2f1
-    style H fill:#f1f8e9
-</code></pre>
-
+                <h2 id="结果及结论"><a href="#结果及结论" class="headerlink" title="结果及结论"></a>结果及结论</h2><p>按引用传递:不会<br>按值传递:会<br>c语言数组不会被std::is_pointer<T>检测为指针。<br>如果按值传递退化为指针则会</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;type_traits&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> T&gt;</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test_type_by_value</span><span class="hljs-params">(T param)</span> </span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Type: &quot;</span> &lt;&lt; <span class="hljs-built_in">typeid</span>(T).<span class="hljs-built_in">name</span>() &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;std::is_pointer&lt;T&gt;::value: &quot;</span> &lt;&lt; std::is_pointer&lt;T&gt;::value &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;std::is_array&lt;T&gt;::value: &quot;</span> &lt;&lt; std::is_array&lt;T&gt;::value &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;---&quot;</span> &lt;&lt; std::endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> T&gt;</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test_type_by_ref</span><span class="hljs-params">(<span class="hljs-type">const</span> T&amp; param)</span> </span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Type: &quot;</span> &lt;&lt; <span class="hljs-built_in">typeid</span>(T).<span class="hljs-built_in">name</span>() &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;std::is_pointer&lt;T&gt;::value: &quot;</span> &lt;&lt; std::is_pointer&lt;T&gt;::value &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;std::is_array&lt;T&gt;::value: &quot;</span> &lt;&lt; std::is_array&lt;T&gt;::value &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;---&quot;</span> &lt;&lt; std::endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 测试 C 数组</span><br>    <span class="hljs-type">int</span> arr[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Testing C array (int[5]) - by value:&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-built_in">test_type_by_value</span>(arr);<br><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Testing C array (int[5]) - by reference:&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-built_in">test_type_by_ref</span>(arr);<br><br>    <span class="hljs-comment">// 测试指针</span><br>    <span class="hljs-type">int</span>* ptr = arr;<br><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Testing pointer (int*) - by value:&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-built_in">test_type_by_value</span>(ptr);<br><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Testing pointer (int*) - by reference:&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-built_in">test_type_by_ref</span>(ptr);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">Testing</span> <span class="hljs-string">C</span> <span class="hljs-string">array</span> <span class="hljs-string">(int[5])</span> <span class="hljs-bullet">-</span> <span class="hljs-attr">by value:</span><br><span class="hljs-attr">Type:</span> <span class="hljs-string">int</span> <span class="hljs-string">*</span> <span class="hljs-string">__ptr64</span><br><span class="hljs-string">std::is_pointer&lt;T&gt;::value:</span> <span class="hljs-number">1</span><br><span class="hljs-string">std::is_array&lt;T&gt;::value:</span> <span class="hljs-number">0</span><br><span class="hljs-meta">---</span><br><span class="hljs-string">Testing</span> <span class="hljs-string">C</span> <span class="hljs-string">array</span> <span class="hljs-string">(int[5])</span> <span class="hljs-bullet">-</span> <span class="hljs-attr">by reference:</span><br><span class="hljs-attr">Type:</span> <span class="hljs-string">int</span> [<span class="hljs-number">5</span>]<br><span class="hljs-string">std::is_pointer&lt;T&gt;::value:</span> <span class="hljs-number">0</span><br><span class="hljs-string">std::is_array&lt;T&gt;::value:</span> <span class="hljs-number">1</span><br><span class="hljs-meta">---</span><br><span class="hljs-attr">Testing pointer (int*) - by value:</span><br><span class="hljs-attr">Type:</span> <span class="hljs-string">int</span> <span class="hljs-string">*</span> <span class="hljs-string">__ptr64</span><br><span class="hljs-string">std::is_pointer&lt;T&gt;::value:</span> <span class="hljs-number">1</span><br><span class="hljs-string">std::is_array&lt;T&gt;::value:</span> <span class="hljs-number">0</span><br><span class="hljs-meta">---</span><br><span class="hljs-attr">Testing pointer (int*) - by reference:</span><br><span class="hljs-attr">Type:</span> <span class="hljs-string">int</span> <span class="hljs-string">*</span> <span class="hljs-string">__ptr64</span><br><span class="hljs-string">std::is_pointer&lt;T&gt;::value:</span> <span class="hljs-number">1</span><br><span class="hljs-string">std::is_array&lt;T&gt;::value:</span> <span class="hljs-number">0</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
+<p>可以看到c语言数组不会被std::is_pointer<T>检测为指针。<br>按值传递退化为指针则会被检测为指针</p>
 
                 
               </div>
@@ -305,34 +289,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/blog/categories/%E7%BC%96%E7%A8%8B%E7%90%86%E8%AE%BA/" class="category-chain-item">编程理论</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/blog/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="print-no-link">#程序设计</a>
-      
-    </div>
   
 </div>
 
@@ -342,8 +298,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>编程范式</div>
-      <div>https://maablock.github.io/blog/2025/08/14/programmer-pattern/</div>
+      <div>c语言数组会被std::is_pointer&lt;T&gt;检测为指针吗？</div>
+      <div>https://maablock.github.io/blog/2025/08/17/is-c-style-array-will-be-cheaked-to-pointer/</div>
     </div>
     <div class="license-meta">
       
@@ -355,7 +311,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月14日</div>
+          <div>2025年8月17日</div>
         </div>
       
       
@@ -387,18 +343,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/2025/08/17/is-c-style-array-will-be-cheaked-to-pointer/" title="c语言数组会被std::is_pointer&lt;T&gt;检测为指针吗？">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">c语言数组会被std::is_pointer&lt;T&gt;检测为指针吗？</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/2025/08/14/regex-replace-sharp-to-b/" title="把**文本**替换为使用html的加粗标识">
-                        <span class="hidden-mobile">把**文本**替换为使用html的加粗标识</span>
+                      <a href="/blog/2025/08/14/programmer-pattern/" title="编程范式">
+                        <span class="hidden-mobile">编程范式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
