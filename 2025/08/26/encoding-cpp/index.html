@@ -19,22 +19,23 @@
   <meta name="author" content="MaBlock">
   <meta name="keywords" content="">
   
-    <meta name="description" content="结果及结论按引用传递:不会按值传递:会c语言数组不会被std::is_pointer检测为指针。如果按值传递退化为指针则会 测试代码如下： 1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;iostream&gt;#include &lt;type_traits&gt;temp">
+    <meta name="description" content="1.源文件编码(字符串实际存储编码)源代码文件的编码，是字符串实际存储的代码（字面量存储的编码） 2.编译器输入编码(source character)编译器认为的字符串的编码（编译器认为的字面量（不加前缀的情况下）编码） 3.执行编码exe实际存储的字符串的编码，编译器会在编译时转换为该执行编码 4.控制台显示编码通过chcp可改变和获取 flowchart LR     A[源文件] --&amp;g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c语言数组会被std::is_pointer&lt;T&gt;检测为指针吗？">
-<meta property="og:url" content="https://maablock.github.io/blog/2025/08/17/is-c-style-array-will-be-cheaked-to-pointer/index.html">
+<meta property="og:title" content="c++中的编码问题">
+<meta property="og:url" content="https://maablock.github.io/blog/2025/08/26/encoding-cpp/index.html">
 <meta property="og:site_name" content="MaBlock Blog">
-<meta property="og:description" content="结果及结论按引用传递:不会按值传递:会c语言数组不会被std::is_pointer检测为指针。如果按值传递退化为指针则会 测试代码如下： 1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;iostream&gt;#include &lt;type_traits&gt;temp">
+<meta property="og:description" content="1.源文件编码(字符串实际存储编码)源代码文件的编码，是字符串实际存储的代码（字面量存储的编码） 2.编译器输入编码(source character)编译器认为的字符串的编码（编译器认为的字面量（不加前缀的情况下）编码） 3.执行编码exe实际存储的字符串的编码，编译器会在编译时转换为该执行编码 4.控制台显示编码通过chcp可改变和获取 flowchart LR     A[源文件] --&amp;g">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-16T16:48:08.000Z">
-<meta property="article:modified_time" content="2025-08-16T16:57:07.304Z">
+<meta property="article:published_time" content="2025-08-26T08:59:16.000Z">
+<meta property="article:modified_time" content="2025-08-26T15:18:31.357Z">
 <meta property="article:author" content="MaBlock">
-<meta property="article:tag" content="模板">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="文件编码">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>c语言数组会被std::is_pointer&lt;T&gt;检测为指针吗？ - MaBlock Blog</title>
+  <title>c++中的编码问题 - MaBlock Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="c语言数组会被std::is_pointer&lt;T&gt;检测为指针吗？"></span>
+            <span id="subtitle" data-typed-text="c++中的编码问题"></span>
           
         </div>
 
@@ -211,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-17 00:48" pubdate>
-          2025年8月17日 凌晨
+        <time datetime="2025-08-26 16:59" pubdate>
+          2025年8月26日 下午
         </time>
       </span>
     
@@ -223,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          425 字
+          413 字
         
       </span>
     
@@ -271,17 +272,60 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">c语言数组会被std::is_pointer&lt;T&gt;检测为指针吗？</h1>
+            <h1 id="seo-header">c++中的编码问题</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="结果及结论"><a href="#结果及结论" class="headerlink" title="结果及结论"></a>结果及结论</h2><p>按引用传递:不会<br>按值传递:会<br>c语言数组不会被std::is_pointer<T>检测为指针。<br>如果按值传递退化为指针则会</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;type_traits&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> T&gt;</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test_type_by_value</span><span class="hljs-params">(T param)</span> </span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Type: &quot;</span> &lt;&lt; <span class="hljs-built_in">typeid</span>(T).<span class="hljs-built_in">name</span>() &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;std::is_pointer&lt;T&gt;::value: &quot;</span> &lt;&lt; std::is_pointer&lt;T&gt;::value &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;std::is_array&lt;T&gt;::value: &quot;</span> &lt;&lt; std::is_array&lt;T&gt;::value &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;---&quot;</span> &lt;&lt; std::endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> T&gt;</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test_type_by_ref</span><span class="hljs-params">(<span class="hljs-type">const</span> T&amp; param)</span> </span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Type: &quot;</span> &lt;&lt; <span class="hljs-built_in">typeid</span>(T).<span class="hljs-built_in">name</span>() &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;std::is_pointer&lt;T&gt;::value: &quot;</span> &lt;&lt; std::is_pointer&lt;T&gt;::value &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;std::is_array&lt;T&gt;::value: &quot;</span> &lt;&lt; std::is_array&lt;T&gt;::value &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;---&quot;</span> &lt;&lt; std::endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 测试 C 数组</span><br>    <span class="hljs-type">int</span> arr[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Testing C array (int[5]) - by value:&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-built_in">test_type_by_value</span>(arr);<br><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Testing C array (int[5]) - by reference:&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-built_in">test_type_by_ref</span>(arr);<br><br>    <span class="hljs-comment">// 测试指针</span><br>    <span class="hljs-type">int</span>* ptr = arr;<br><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Testing pointer (int*) - by value:&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-built_in">test_type_by_value</span>(ptr);<br><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Testing pointer (int*) - by reference:&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-built_in">test_type_by_ref</span>(ptr);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">Testing</span> <span class="hljs-string">C</span> <span class="hljs-string">array</span> <span class="hljs-string">(int[5])</span> <span class="hljs-bullet">-</span> <span class="hljs-attr">by value:</span><br><span class="hljs-attr">Type:</span> <span class="hljs-string">int</span> <span class="hljs-string">*</span> <span class="hljs-string">__ptr64</span><br><span class="hljs-string">std::is_pointer&lt;T&gt;::value:</span> <span class="hljs-number">1</span><br><span class="hljs-string">std::is_array&lt;T&gt;::value:</span> <span class="hljs-number">0</span><br><span class="hljs-meta">---</span><br><span class="hljs-string">Testing</span> <span class="hljs-string">C</span> <span class="hljs-string">array</span> <span class="hljs-string">(int[5])</span> <span class="hljs-bullet">-</span> <span class="hljs-attr">by reference:</span><br><span class="hljs-attr">Type:</span> <span class="hljs-string">int</span> [<span class="hljs-number">5</span>]<br><span class="hljs-string">std::is_pointer&lt;T&gt;::value:</span> <span class="hljs-number">0</span><br><span class="hljs-string">std::is_array&lt;T&gt;::value:</span> <span class="hljs-number">1</span><br><span class="hljs-meta">---</span><br><span class="hljs-attr">Testing pointer (int*) - by value:</span><br><span class="hljs-attr">Type:</span> <span class="hljs-string">int</span> <span class="hljs-string">*</span> <span class="hljs-string">__ptr64</span><br><span class="hljs-string">std::is_pointer&lt;T&gt;::value:</span> <span class="hljs-number">1</span><br><span class="hljs-string">std::is_array&lt;T&gt;::value:</span> <span class="hljs-number">0</span><br><span class="hljs-meta">---</span><br><span class="hljs-attr">Testing pointer (int*) - by reference:</span><br><span class="hljs-attr">Type:</span> <span class="hljs-string">int</span> <span class="hljs-string">*</span> <span class="hljs-string">__ptr64</span><br><span class="hljs-string">std::is_pointer&lt;T&gt;::value:</span> <span class="hljs-number">1</span><br><span class="hljs-string">std::is_array&lt;T&gt;::value:</span> <span class="hljs-number">0</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
-<p>可以看到c语言数组不会被std::is_pointer<T>检测为指针。<br>按值传递退化为指针则会被检测为指针</p>
+                <h2 id="1-源文件编码-字符串实际存储编码"><a href="#1-源文件编码-字符串实际存储编码" class="headerlink" title="1.源文件编码(字符串实际存储编码)"></a>1.源文件编码(字符串实际存储编码)</h2><p>源代码文件的编码，是字符串实际存储的代码（字面量存储的编码）</p>
+<h2 id="2-编译器输入编码-source-character"><a href="#2-编译器输入编码-source-character" class="headerlink" title="2.编译器输入编码(source character)"></a>2.编译器输入编码(source character)</h2><p>编译器认为的字符串的编码（编译器认为的字面量（不加前缀的情况下）编码）</p>
+<h2 id="3-执行编码"><a href="#3-执行编码" class="headerlink" title="3.执行编码"></a>3.执行编码</h2><p>exe实际存储的字符串的编码，编译器会在编译时转换为该执行编码</p>
+<h2 id="4-控制台显示编码"><a href="#4-控制台显示编码" class="headerlink" title="4.控制台显示编码"></a>4.控制台显示编码</h2><p>通过chcp可改变和获取</p>
+<pre><code class=" mermaid">flowchart LR
+    A[源文件] --&gt; B[编译器处理]
+
+    subgraph B [编译器处理阶段]
+        B1[源文件编码&lt;br&gt;UTF-8/GBK等]
+        B2[被编译器视为 编译器输入编码]
+        B3[转换为执行编码]
+        B1--&gt;B2--&gt;B3
+    end
+
+    B --&gt; C&#123;输出方式&#125;
+
+    C --&gt; D[标准输出流 cout]
+    C --&gt; E[宽字节输出流 wcout]
+
+    subgraph D [cout 处理流程]
+        D1[字符串按执行编码&lt;br&gt;直接输出字节]
+        D2[控制台接收字节流]
+        D3[控制台以显示编码解读]
+        D1--&gt;D2--&gt;D3
+    end
+
+    subgraph E [wcout 处理流程]
+        E1[字符串被视为执行编码]
+        E2[转换为wcout的locale指定编码]
+        E3[控制台接收转换后字节]
+        E4[控制台以显示编码解读]
+        E1--&gt;E2--&gt;E3--&gt;E4
+        F[locale对象] --&gt; E2
+    end
+
+
+    D3 --&gt; G[显示结果]
+    E4 --&gt; G
+
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style D fill:#fff3e0
+    style E fill:#e8f5e9
+    style F fill:#ffebee
+    style G fill:#bbdefb
+</code></pre>
+
+<h2 id="CMake中设置编译器输入执行编码"><a href="#CMake中设置编译器输入执行编码" class="headerlink" title="CMake中设置编译器输入执行编码"></a>CMake中设置编译器输入执行编码</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment">## CMake中设置编译器输入执行编码</span><br>```cmake<br><span class="hljs-keyword">if</span>(MSVC) <span class="hljs-comment"># msvc</span><br>    <span class="hljs-keyword">target_compile_options</span>(<span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span> PRIVATE<br>        /source-charset:utf-<span class="hljs-number">8</span>    <span class="hljs-comment"># 输入编码</span><br>        /execution-charset:utf-<span class="hljs-number">8</span> <span class="hljs-comment"># 执行编码</span><br>    )<br><span class="hljs-keyword">else</span>() <span class="hljs-comment"># gcc 或 clang</span><br>    <span class="hljs-keyword">target_compile_options</span>(<span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span> PRIVATE <br>        -finput-charset=UTF-<span class="hljs-number">8</span>     <span class="hljs-comment"># 输入编码</span><br>        -fexec-charset=UTF-<span class="hljs-number">8</span>      <span class="hljs-comment"># 执行编码</span><br>    )<br><span class="hljs-keyword">endif</span>()<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -294,7 +338,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/%E6%A8%A1%E6%9D%BF/" class="print-no-link">#模板</a>
+        <a href="/blog/tags/c/" class="print-no-link">#c++</a>
+      
+        <a href="/blog/tags/%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81/" class="print-no-link">#文件编码</a>
       
     </div>
   
@@ -306,8 +352,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>c语言数组会被std::is_pointer&lt;T&gt;检测为指针吗？</div>
-      <div>https://maablock.github.io/blog/2025/08/17/is-c-style-array-will-be-cheaked-to-pointer/</div>
+      <div>c++中的编码问题</div>
+      <div>https://maablock.github.io/blog/2025/08/26/encoding-cpp/</div>
     </div>
     <div class="license-meta">
       
@@ -319,7 +365,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月17日</div>
+          <div>2025年8月26日</div>
         </div>
       
       
@@ -351,18 +397,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/2025/08/24/assimp-data-graph/" title="assimp-data-graph">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">assimp-data-graph</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/2025/08/14/programmer-pattern/" title="编程范式">
-                        <span class="hidden-mobile">编程范式</span>
+                      <a href="/blog/2025/08/24/assimp-data-graph/" title="assimp-data-graph">
+                        <span class="hidden-mobile">assimp-data-graph</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
