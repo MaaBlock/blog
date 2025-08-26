@@ -27,7 +27,7 @@
 <meta property="og:description" content="1.源文件编码(字符串实际存储编码)源代码文件的编码，是字符串实际存储的代码（字面量存储的编码） 2.编译器输入编码(source character)编译器认为的字符串的编码（编译器认为的字面量（不加前缀的情况下）编码） 3.执行编码exe实际存储的字符串的编码，编译器会在编译时转换为该执行编码 4.控制台显示编码通过chcp可改变和获取 flowchart LR     A[源文件] --&amp;g">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-26T08:59:16.000Z">
-<meta property="article:modified_time" content="2025-08-26T15:18:31.357Z">
+<meta property="article:modified_time" content="2025-08-26T15:20:15.690Z">
 <meta property="article:author" content="MaBlock">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="文件编码">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          413 字
+          399 字
         
       </span>
     
@@ -324,7 +324,7 @@
     style G fill:#bbdefb
 </code></pre>
 
-<h2 id="CMake中设置编译器输入执行编码"><a href="#CMake中设置编译器输入执行编码" class="headerlink" title="CMake中设置编译器输入执行编码"></a>CMake中设置编译器输入执行编码</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment">## CMake中设置编译器输入执行编码</span><br>```cmake<br><span class="hljs-keyword">if</span>(MSVC) <span class="hljs-comment"># msvc</span><br>    <span class="hljs-keyword">target_compile_options</span>(<span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span> PRIVATE<br>        /source-charset:utf-<span class="hljs-number">8</span>    <span class="hljs-comment"># 输入编码</span><br>        /execution-charset:utf-<span class="hljs-number">8</span> <span class="hljs-comment"># 执行编码</span><br>    )<br><span class="hljs-keyword">else</span>() <span class="hljs-comment"># gcc 或 clang</span><br>    <span class="hljs-keyword">target_compile_options</span>(<span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span> PRIVATE <br>        -finput-charset=UTF-<span class="hljs-number">8</span>     <span class="hljs-comment"># 输入编码</span><br>        -fexec-charset=UTF-<span class="hljs-number">8</span>      <span class="hljs-comment"># 执行编码</span><br>    )<br><span class="hljs-keyword">endif</span>()<br></code></pre></td></tr></table></figure>
+<h2 id="CMake中设置编译器输入执行编码"><a href="#CMake中设置编译器输入执行编码" class="headerlink" title="CMake中设置编译器输入执行编码"></a>CMake中设置编译器输入执行编码</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">if</span>(MSVC) <span class="hljs-comment"># msvc</span><br>    <span class="hljs-keyword">target_compile_options</span>(<span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span> PRIVATE<br>        /source-charset:utf-<span class="hljs-number">8</span>    <span class="hljs-comment"># 输入编码</span><br>        /execution-charset:utf-<span class="hljs-number">8</span> <span class="hljs-comment"># 执行编码</span><br>    )<br><span class="hljs-keyword">else</span>() <span class="hljs-comment"># gcc 或 clang</span><br>    <span class="hljs-keyword">target_compile_options</span>(<span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span> PRIVATE <br>        -finput-charset=UTF-<span class="hljs-number">8</span>     <span class="hljs-comment"># 输入编码</span><br>        -fexec-charset=UTF-<span class="hljs-number">8</span>      <span class="hljs-comment"># 执行编码</span><br>    )<br><span class="hljs-keyword">endif</span>()<br></code></pre></td></tr></table></figure>
 
 
                 
