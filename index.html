@@ -227,6 +227,39 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/blog/2025/08/27/memery-in-mutil-dll-include-lib/" target="_self">
+          多dll链接同一个lib的内存情况
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/blog/2025/08/27/memery-in-mutil-dll-include-lib/" target="_self">
+        <div>
+          在大型项目（尤其是游戏开发）中，我们经常会将一些公用代码编译成静态库（.lib），然后由不同的动态库（.dll）模块去链接。这样做可以提高编译效率、方便代码复用。然而，这种做法会引出一个非常关键且容易被忽略的内存问题：静态库中的全局变量（或静态变量）会在每一个链接它的DLL中都创建一份独立的副本。 为什么会产生多份副本？要理解这个问题，首先需要明白静态库（.lib）和动态库（.dll）的链接原理。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-08-27 12:23" pubdate>
+              2025-08-27
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/blog/2025/08/26/encoding-cpp/" target="_self">
           c++中的编码问题
         </a>
